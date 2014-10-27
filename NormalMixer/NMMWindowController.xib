@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NMMWindowController">
+            <connections>
+                <outlet property="baseNormalsView" destination="G8l-qb-h9S" id="YLJ-vP-z6b"/>
+                <outlet property="detailNormalsView" destination="oVu-7j-lBc" id="OXM-xP-baj"/>
+                <outlet property="renderViewContainer" destination="Abb-bT-QDU" id="ZLA-FR-dLj"/>
+                <outlet property="sliderValueField" destination="YNi-bU-4JD" id="NXI-UU-v2V"/>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Normal Map Merge" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="769" height="510"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="769" height="510"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G8l-qb-h9S" userLabel="Base Normals View">
+                        <rect key="frame" x="17" y="382" width="86" height="86"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="h4x-fo-9TV"/>
+                            <constraint firstAttribute="width" secondItem="G8l-qb-h9S" secondAttribute="height" multiplier="1:1" id="sr9-fj-SRS"/>
+                        </constraints>
+                        <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="Uk3-YK-odA"/>
+                    </imageView>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oVu-7j-lBc" userLabel="Detail Normals View">
+                        <rect key="frame" x="17" y="260" width="86" height="86"/>
+                        <imageCell key="cell" selectable="YES" editable="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="whg-AC-YgV"/>
+                    </imageView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uHc-Yv-30Z">
+                        <rect key="frame" x="14" y="13" width="92" height="32"/>
+                        <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="16G-HI-rg1">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="refreshClicked:" target="-2" id="Ead-Jh-4se"/>
+                        </connections>
+                    </button>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Abb-bT-QDU">
+                        <rect key="frame" x="120" y="20" width="629" height="470"/>
+                    </customView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eiO-qL-1Nb">
+                        <rect key="frame" x="29" y="473" width="63" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Base Map" id="slc-HW-Dkj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Muw-iU-d7e">
+                        <rect key="frame" x="24" y="351" width="72" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Detail Map" id="kWY-24-5XL">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sWd-cj-XCH">
+                        <rect key="frame" x="18" y="199" width="84" height="21"/>
+                        <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="NoG-5g-Y9F"/>
+                        <connections>
+                            <action selector="scaleSliderDidMove:" target="-2" id="iM2-Ao-iT0"/>
+                        </connections>
+                    </slider>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i7g-rW-s0g">
+                        <rect key="frame" x="42" y="226" width="36" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Scale" id="EJj-4U-VJk">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNi-bU-4JD">
+                        <rect key="frame" x="30" y="171" width="60" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="right" placeholderString="0.5" drawsBackground="YES" id="q51-ZH-5G5">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oVu-7j-lBc" firstAttribute="centerX" secondItem="Muw-iU-d7e" secondAttribute="centerX" id="4be-J2-vL4"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="20" id="5Zs-59-0t3"/>
+                    <constraint firstItem="Abb-bT-QDU" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="7HS-ig-s53"/>
+                    <constraint firstItem="uHc-Yv-30Z" firstAttribute="trailing" secondItem="oVu-7j-lBc" secondAttribute="trailing" id="9pz-qj-mvQ"/>
+                    <constraint firstAttribute="bottom" secondItem="uHc-Yv-30Z" secondAttribute="bottom" constant="20" id="ACg-hT-B3T"/>
+                    <constraint firstItem="YNi-bU-4JD" firstAttribute="trailing" secondItem="sWd-cj-XCH" secondAttribute="trailing" constant="-10" id="AZ6-cc-SIY"/>
+                    <constraint firstItem="i7g-rW-s0g" firstAttribute="top" secondItem="oVu-7j-lBc" secondAttribute="bottom" constant="20" id="EGy-nC-TaD"/>
+                    <constraint firstItem="Abb-bT-QDU" firstAttribute="leading" secondItem="G8l-qb-h9S" secondAttribute="trailing" constant="20" id="N7f-Ig-1zM"/>
+                    <constraint firstItem="sWd-cj-XCH" firstAttribute="top" secondItem="i7g-rW-s0g" secondAttribute="bottom" constant="8" id="Rag-bE-xuw"/>
+                    <constraint firstItem="oVu-7j-lBc" firstAttribute="top" secondItem="Muw-iU-d7e" secondAttribute="bottom" constant="8" id="SVB-Fg-h42"/>
+                    <constraint firstItem="eiO-qL-1Nb" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="20" id="TcK-7A-Qoi"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="top" secondItem="eiO-qL-1Nb" secondAttribute="bottom" constant="8" id="Wzf-kL-eNL"/>
+                    <constraint firstItem="oVu-7j-lBc" firstAttribute="trailing" secondItem="sWd-cj-XCH" secondAttribute="trailing" id="XeF-oy-hTX"/>
+                    <constraint firstItem="uHc-Yv-30Z" firstAttribute="leading" secondItem="oVu-7j-lBc" secondAttribute="leading" id="YgJ-25-CBF"/>
+                    <constraint firstAttribute="trailing" secondItem="Abb-bT-QDU" secondAttribute="trailing" constant="20" id="bdJ-fi-leU"/>
+                    <constraint firstItem="oVu-7j-lBc" firstAttribute="leading" secondItem="sWd-cj-XCH" secondAttribute="leading" id="bkh-mX-ocK"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="height" secondItem="oVu-7j-lBc" secondAttribute="height" id="cij-sK-Cbd"/>
+                    <constraint firstItem="Muw-iU-d7e" firstAttribute="top" secondItem="G8l-qb-h9S" secondAttribute="bottom" constant="17" id="d6r-2X-2Wk"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="centerX" secondItem="eiO-qL-1Nb" secondAttribute="centerX" id="dkv-Me-gSN"/>
+                    <constraint firstItem="YNi-bU-4JD" firstAttribute="top" secondItem="sWd-cj-XCH" secondAttribute="bottom" constant="8" id="qIF-dl-E9j"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="trailing" secondItem="oVu-7j-lBc" secondAttribute="trailing" id="qxe-FS-aJg"/>
+                    <constraint firstAttribute="bottom" secondItem="Abb-bT-QDU" secondAttribute="bottom" constant="20" id="slb-Q9-eFY"/>
+                    <constraint firstItem="YNi-bU-4JD" firstAttribute="leading" secondItem="sWd-cj-XCH" secondAttribute="leading" constant="10" id="u2h-Lj-lm9"/>
+                    <constraint firstItem="i7g-rW-s0g" firstAttribute="centerX" secondItem="sWd-cj-XCH" secondAttribute="centerX" id="uXA-RN-6gY"/>
+                    <constraint firstItem="G8l-qb-h9S" firstAttribute="leading" secondItem="oVu-7j-lBc" secondAttribute="leading" id="wlM-jJ-BKM"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="283.5" y="267"/>
+        </window>
+    </objects>
+</document>
